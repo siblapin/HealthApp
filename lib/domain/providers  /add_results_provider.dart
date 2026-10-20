@@ -1,7 +1,18 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import '../../core/constants/constants_exp.dart';
+class NavigationProvider extends ChangeNotifier {
+ int currenBotton1Index = 0;
+  int currenBotton2Index = 0;
+ void navigationBar (int index) {
+       
+      currenBotton1Index = index;
+       currenBotton2Index = index;
+        notifyListeners(); 
+            
 
+        }
+}
 
 
 class AddResultsProvider extends ChangeNotifier {

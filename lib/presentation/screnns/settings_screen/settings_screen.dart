@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../core/constants/constants_exp.dart';
-import 'widgets/Input_of_Indicators_model.dart';
 import 'widgets/status_model.dart';
 import 'providers/settings_provider.dart';
 
@@ -15,7 +14,7 @@ class SettingScreen extends StatelessWidget {
       backgroundColor: ColorBackgroundApp().bg,
       body: SafeArea(
           child: Container(
-        margin: const EdgeInsets.only(left: 10, right: 10),
+        margin: const EdgeInsets.only(left: 20, right: 20),
         child: Column(
           children: [
             GestureDetector(
@@ -40,19 +39,8 @@ class SettingScreen extends StatelessWidget {
                 child: ListView(
                   children: [
                     const SizedBox(height: 20),
-                    const OutputSisDisPuls(),
-                    // const GenderBottons(),
-                    const SizedBox(height: 10),
-                    const InfoWidgetsInput(),
-                    const SizedBox(height: 20),
-                    const InputOfIndicatorsSettings(),
-                    const ButtonUpdateResult(),
-                    const SizedBox(height: 20),
-                    Text(
-                      "Настройка информации",
-                      style: TextStyle(color: ColorBackgroundApp().color_100, fontSize: 18),
-                      textAlign: TextAlign.center,
-                    ),
+                    
+              
                     StatusModel(
                       nameTitle: 'Самочувствие',
                       yesNoStatus: settingsProvider.yesNoStatus,
@@ -112,12 +100,12 @@ class OutputSisDisPuls extends StatelessWidget {
         SizedBox(
           width: double.infinity,
           child: Text(
-            "Моё давление",
+            "ИНФОРМАЦИЯ",
             style: TextStyle(color: ColorBackgroundApp().color_100, fontSize: 18),
             textAlign: TextAlign.center,
           ),
         ),
-        const SizedBox(height: 5),
+        const SizedBox(height: 15),
         Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
           Container(
               padding: const EdgeInsets.all(10),
@@ -216,7 +204,8 @@ class ButtonUpdateResult extends StatelessWidget {
   Widget build(BuildContext context) {
     var inputSisDis = context.read<SettingsProvider>();
     return SizedBox(
-      width: 100,
+   
+      height: 70,
       child: ElevatedButton.icon(
         style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(ColorBackgroundApp().color_100)),
         onPressed: () {
@@ -227,7 +216,7 @@ class ButtonUpdateResult extends StatelessWidget {
           inputSisDis.saveData();
         },
         label: Text(
-          "Сохранить моё давление",
+          "Обновить данные",
           style: TextStyle(color: ColorBackgroundApp().bg, fontSize: 18),
         ),
       ),

@@ -17,7 +17,7 @@ class InputOfIndicatorsSettings extends StatelessWidget {
         Container(
           width: double.infinity,
           decoration: BoxDecoration(
-              color: ColorBackgroundApp().color_100,
+              color: Colors.deepPurple[200],
               borderRadius: const BorderRadius.all(Radius.circular(30))),
           child: Padding(
             padding:

@@ -11,4 +11,5 @@ List <SingleChildWidget> providersApp =[  ChangeNotifierProvider(create: (contex
         ChangeNotifierProvider(create: (context) => TextDataProvider()),
         ChangeNotifierProvider(create: (context) => BoardHomeProvider()),
         ChangeNotifierProvider(create: (context) => DatabaseProvider()),
-        ChangeNotifierProvider(create: (context) => SettingsProvider())];
+        ChangeNotifierProvider(create: (context) => SettingsProvider()),
+         ChangeNotifierProvider(create: (context) => NavigationProvider())];

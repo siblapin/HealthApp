@@ -34,7 +34,7 @@ class Medicine extends StatelessWidget {
                       tabBotton.tabBottonFunc();
                     },
                     child: SizedBox(
-                      child: SvgPicture.asset(
+                      child: (tabBotton.tabBotton) ? Icon(Icons.close, color: Colors.red[300],weight: 24) : SvgPicture.asset(
                           'assets/icons/eva_plus-circle-fill.svg',
                           height: 24,
                           width: 24),
