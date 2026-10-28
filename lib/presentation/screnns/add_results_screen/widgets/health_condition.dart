@@ -2,56 +2,64 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import '../../../../core/constants/constants_exp.dart';
-import '../../../../domain/providers  /add_results_provider.dart';
-
-//Блок выбора самочувствия "Плохо - Недомагание - Хорошо - Отлично"
+import '../../../../domain/providers/add_results_provider.dart';
 
 class HealthCondition extends StatelessWidget {
-  const HealthCondition({
-    super.key,
-  });
+  const HealthCondition({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
-      const SizedBox(
+    return Column(
+      children: [
+        const SizedBox(
           width: double.infinity,
-          child: Text(
-            "Самочувствие",
-            textAlign: TextAlign.start,
-          )),
-      const SizedBox(height: 12),
-      Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-        Flexible(
-            flex: 1,
-            child:
-                SmBotton(iconsmiley: bad, textStatus: 'Плохо', indefecator: 1)),
-        Flexible(
-            flex: 2,
-            child: SmBotton(
+          child: Text('Самочувствие', textAlign: TextAlign.start),
+        ),
+        const SizedBox(height: 12),
+        Row(
+          children: [
+            Expanded(
+              child: SmBotton(
+                iconsmiley: bad,
+                textStatus: 'Плохо',
+                indefecator: 1,
+              ),
+            ),
+            Expanded(
+              child: SmBotton(
                 iconsmiley: depression,
                 textStatus: 'Недомагание',
-                indefecator: 2)),
-        Flexible(
-            flex: 1,
-            child: SmBotton(
-                iconsmiley: good, textStatus: 'Хорошо', indefecator: 3)),
-        Flexible(
-            flex: 1,
-            child: SmBotton(
-                iconsmiley: happy, textStatus: 'Отлично', indefecator: 4)),
-      ])
-    ]);
+                indefecator: 2,
+              ),
+            ),
+            Expanded(
+              child: SmBotton(
+                iconsmiley: good,
+                textStatus: 'Хорошо',
+                indefecator: 3,
+              ),
+            ),
+            Expanded(
+              child: SmBotton(
+                iconsmiley: happy,
+                textStatus: 'Отлично',
+                indefecator: 4,
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
   }
 }
 
-// Модель
 class SmBotton extends StatelessWidget {
-  const SmBotton(
-      {super.key,
-      required this.iconsmiley,
-      required this.textStatus,
-      required this.indefecator});
+  const SmBotton({
+    super.key,
+    required this.iconsmiley,
+    required this.textStatus,
+    required this.indefecator,
+  });
 
   final String iconsmiley;
   final String textStatus;
@@ -60,36 +68,36 @@ class SmBotton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final smiley = context.watch<AddResultsProvider>();
+    final selected = smiley.smileyInt == indefecator;
     return GestureDetector(
       onTap: () {
         smiley.smileyIntFunc(indefecator);
       },
-      child: SizedBox(
-        height: 50,
-        child: Column(
-          children: [
-            const SizedBox(height: 4),
-            (smiley.smileyInt == indefecator)
-                ? SvgPicture.asset(
-                    iconsmiley,
-                    height: 26,
-                    width: 26,
-                  )
-                : SvgPicture.asset(
-                    iconsmiley,
-                    height: 24,
-                    width: 24,
-                    colorFilter:
-                        const ColorFilter.mode(Colors.white, BlendMode.color),
-                  ),
-            Text(textStatus,
-                style: TextStyle(
-                    fontSize: 12,
-                    color: (smiley.smileyInt == indefecator)
-                        ? ColorBackgroundApp().color_100
-                        : ColorBackgroundApp().color_40))
-          ],
-        ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          SvgPicture.asset(
+            iconsmiley,
+            height: selected ? 26 : 24,
+            width: selected ? 26 : 24,
+            colorFilter: selected
+                ? null
+                : const ColorFilter.mode(Colors.white, BlendMode.color),
+          ),
+          const SizedBox(height: 2),
+          Text(
+            textStatus,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 11,
+              color: selected
+                  ? ColorBackgroundApp.color_100
+                  : ColorBackgroundApp.color_40,
+            ),
+          ),
+        ],
       ),
     );
   }

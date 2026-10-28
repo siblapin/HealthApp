@@ -11,21 +11,20 @@ class LogoHomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 335,
-      height: 31,
+      width: double.infinity,
+      height: 32,
       child: Row(
         children: [
-          const SizedBox(width: 24),
+          const SizedBox(width: 8),
           Expanded(
-            child: SizedBox(
-              child: Center(
-                child: Text(
-                  "Дневник давления",
-                  style: TextStyle(
-                    color: ColorBackgroundApp().color_100,
-                    fontSize: 24,
-                  ),
-                ),
+            child: Text(
+              'Дневник давления',
+              textAlign: TextAlign.center,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                color: ColorBackgroundApp.color_100,
+                fontSize: 22,
               ),
             ),
           ),
@@ -39,7 +38,7 @@ class LogoHomeScreen extends StatelessWidget {
               child: SizedBox(
                 width: 24,
                 height: 24,
-                child: Icon(Icons.settings, color: ColorBackgroundApp().color_100),
+                child: Icon(Icons.settings, color: ColorBackgroundApp.color_100),
               ),
             ),
           )

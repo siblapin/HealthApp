@@ -23,15 +23,15 @@ class SisDisPuls extends StatelessWidget {
         children: [
           Text(textTitle,
               softWrap: true,
-              style: TextStyle(fontSize: 14, color: ColorBackgroundApp().textColor2),
+              style: TextStyle(fontSize: 14, color: ColorBackgroundApp.textColor2),
               overflow: TextOverflow.ellipsis),
           Text(inputText,
               softWrap: true,
               overflow: TextOverflow.ellipsis,
-              style: TextStyle(fontSize: 22, color: ColorBackgroundApp().textColor)),
+              style: TextStyle(fontSize: 22, color: ColorBackgroundApp.textColor)),
           Text(text,
               overflow: TextOverflow.ellipsis,
-              style: TextStyle(fontSize: 12, color: ColorBackgroundApp().color_40)),
+              style: TextStyle(fontSize: 12, color: ColorBackgroundApp.color_40)),
         ],
       ),
     );

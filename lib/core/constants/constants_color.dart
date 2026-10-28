@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
+class ColorBackgroundApp {
+  ColorBackgroundApp._();
 
-class ColorBackgroundApp{Color bg = const Color.fromRGBO(246, 246, 255, 1);
-Color color_100 = const Color.fromRGBO(107, 109, 176, 1);
-Color color_40 = const Color.fromRGBO(148, 163, 184, 1);
-Color mint = const Color.fromRGBO(203, 239, 237, 1);
-Color textColor = const Color.fromRGBO(18, 16, 66, 1);
-Color textColor2 = const Color.fromRGBO(22, 133, 137, 1);
-Color colorWhite = Colors.white;}
-
-
+  static const Color bg = Color.fromRGBO(246, 246, 255, 1);
+  static const Color color_100 = Color.fromRGBO(107, 109, 176, 1);
+  static const Color color_40 = Color.fromRGBO(148, 163, 184, 1);
+  static const Color mint = Color.fromRGBO(203, 239, 237, 1);
+  static const Color textColor = Color.fromRGBO(18, 16, 66, 1);
+  static const Color textColor2 = Color.fromRGBO(22, 133, 137, 1);
+  static const Color colorWhite = Colors.white;
+}

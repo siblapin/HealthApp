@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import '../../../../core/constants/constants_exp.dart';
-import '../../../../domain/providers  /add_results_provider.dart';
+import '../../../../domain/providers/add_results_provider.dart';
 
 //Блок выбора руки измерения давления
 

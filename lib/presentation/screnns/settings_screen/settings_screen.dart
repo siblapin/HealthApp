@@ -11,7 +11,7 @@ class SettingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final settingsProvider = context.watch<SettingsProvider>();
     return Scaffold(
-      backgroundColor: ColorBackgroundApp().bg,
+      backgroundColor: ColorBackgroundApp.bg,
       body: SafeArea(
           child: Container(
         margin: const EdgeInsets.only(left: 20, right: 20),
@@ -26,13 +26,13 @@ class SettingScreen extends StatelessWidget {
                   width: double.infinity,
                   height: 50,
                   child: Text("Назад",
-                      style: TextStyle(color: ColorBackgroundApp().color_100, fontSize: 16)),
+                      style: TextStyle(color: ColorBackgroundApp.color_100, fontSize: 16)),
                 )),
             Container(
                 alignment: AlignmentDirectional.bottomStart,
                 width: double.infinity,
                 child: Text("Настройки",
-                    style: TextStyle(color: ColorBackgroundApp().color_100, fontSize: 20))),
+                    style: TextStyle(color: ColorBackgroundApp.color_100, fontSize: 20))),
             Expanded(
               child: SizedBox(
                 width: double.infinity,
@@ -101,70 +101,28 @@ class OutputSisDisPuls extends StatelessWidget {
           width: double.infinity,
           child: Text(
             "ИНФОРМАЦИЯ",
-            style: TextStyle(color: ColorBackgroundApp().color_100, fontSize: 18),
+            style: TextStyle(color: ColorBackgroundApp.color_100, fontSize: 18),
             textAlign: TextAlign.center,
           ),
         ),
         const SizedBox(height: 15),
-        Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-          Container(
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                  color: ColorBackgroundApp().color_100,
-                  borderRadius: const BorderRadius.all(Radius.circular(10))),
-              child: Column(
-                children: [
-                  const Text('Верхнее'),
-                  Text(inputSisDis.infosisSp,
-                      style: TextStyle(color: ColorBackgroundApp().bg, fontSize: 24))
-                ],
-              )),
-          const SizedBox(height: 5),
-          Container(
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                  color: ColorBackgroundApp().color_100,
-                  borderRadius: const BorderRadius.all(Radius.circular(10))),
-              child: Column(
-                children: [
-                  const Text('Нижнее'),
-                  Text(inputSisDis.infodisSp,
-                      style: TextStyle(color: ColorBackgroundApp().bg, fontSize: 24))
-                ],
-              )),
-          const SizedBox(height: 5),
-          Container(
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                  color: ColorBackgroundApp().color_100,
-                  borderRadius: const BorderRadius.all(Radius.circular(10))),
-              child: Column(
-                children: [
-                  const Text('Пульс'),
-                  Text(inputSisDis.infopulsSp,
-                      style: TextStyle(color: ColorBackgroundApp().bg, fontSize: 24))
-                ],
-              )),
-          const SizedBox(height: 10),
-          Container(
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                  color: ColorBackgroundApp().color_100,
-                  borderRadius: const BorderRadius.all(Radius.circular(10))),
-              child: Column(
-                children: [
-                  const Text('Возраст'),
-                  Text(inputSisDis.infoageSp,
-                      style: TextStyle(color: ColorBackgroundApp().bg, fontSize: 24))
-                ],
-              )),
-        ]),
+        Row(
+          children: [
+            Expanded(child: _InfoChip(title: 'Верхнее', value: inputSisDis.infosisSp)),
+            const SizedBox(width: 6),
+            Expanded(child: _InfoChip(title: 'Нижнее', value: inputSisDis.infodisSp)),
+            const SizedBox(width: 6),
+            Expanded(child: _InfoChip(title: 'Пульс', value: inputSisDis.infopulsSp)),
+            const SizedBox(width: 6),
+            Expanded(child: _InfoChip(title: 'Возраст', value: inputSisDis.infoageSp)),
+          ],
+        ),
         const SizedBox(height: 15),
         SizedBox(
           width: double.infinity,
           child: Text(
             "Нормы давления",
-            style: TextStyle(color: ColorBackgroundApp().color_100, fontSize: 18),
+            style: TextStyle(color: ColorBackgroundApp.color_100, fontSize: 18),
             textAlign: TextAlign.center,
           ),
         ),
@@ -184,11 +142,11 @@ class ButtonSave extends StatelessWidget {
       width: double.infinity,
       height: 48,
       child: ElevatedButton.icon(
-        style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(ColorBackgroundApp().color_100)),
+        style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(ColorBackgroundApp.color_100)),
         onPressed: () {},
         label: Text(
           "Сохранить",
-          style: TextStyle(color: ColorBackgroundApp().bg, fontSize: 18),
+          style: TextStyle(color: ColorBackgroundApp.bg, fontSize: 18),
         ),
       ),
     );
@@ -207,17 +165,16 @@ class ButtonUpdateResult extends StatelessWidget {
    
       height: 70,
       child: ElevatedButton.icon(
-        style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(ColorBackgroundApp().color_100)),
+        style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(ColorBackgroundApp.color_100)),
         onPressed: () {
-          inputSisDis.updateSisDisPuls();
-          (inputSisDis.disInput.text.isNotEmpty) ? inputSisDis.imputDis() : 0;
-          (inputSisDis.sisInput.text.isNotEmpty) ? inputSisDis.imputSis() : 0;
-          (inputSisDis.ageInput.text.isNotEmpty) ? inputSisDis.impuAge() : 0;
+          inputSisDis.imputDis();
+          inputSisDis.imputSis();
+          inputSisDis.impuAge();
           inputSisDis.saveData();
         },
         label: Text(
           "Обновить данные",
-          style: TextStyle(color: ColorBackgroundApp().bg, fontSize: 18),
+          style: TextStyle(color: ColorBackgroundApp.bg, fontSize: 18),
         ),
       ),
     );
@@ -235,79 +192,135 @@ class InfoWidgetsInput extends StatelessWidget {
           width: double.infinity,
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
-              color: ColorBackgroundApp().color_100,
+              color: ColorBackgroundApp.color_100,
               borderRadius: const BorderRadius.all(Radius.circular(10))),
           child: Column(
             children: [
               Text('Норма давления при вашем возрасте',
-                  style: TextStyle(color: ColorBackgroundApp().bg, fontSize: 14), softWrap: true),
+                  style: TextStyle(color: ColorBackgroundApp.bg, fontSize: 14), softWrap: true),
               Text(inputSisDis.infoAge,
                   style: TextStyle(color: Colors.green[300], fontSize: 24)),
               Text(
                   '*показатели могут отличаться от вашего нормального давления',
-                  style: TextStyle(color: ColorBackgroundApp().color_40, fontSize: 10),
+                  style: TextStyle(color: ColorBackgroundApp.color_40, fontSize: 10),
                   softWrap: true),
             ],
           )),
       const SizedBox(height: 10),
-      Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-        Container(
-            padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(
-                color: ColorBackgroundApp().color_100,
-                borderRadius: const BorderRadius.all(Radius.circular(10))),
-            child: Column(
-              children: [
-                Text('ВЕРХНЕЕ (SIS)',
-                    softWrap: true,
-                    style: TextStyle(
-                        color: (inputSisDis.infoTestSIS == 'понижено')
-                            ? Colors.orange[300]
-                            : (inputSisDis.infoTestSIS == 'норма')
-                                ? Colors.green[300]
-                                : (inputSisDis.infoTestSIS == 'повышено')
-                                    ? Colors.red[300]
-                                    : Colors.white)),
-                Text(inputSisDis.infoTestSIS,
-                    style: TextStyle(color: ColorBackgroundApp().bg, fontSize: 14))
-              ],
-            )),
-        const SizedBox(height: 10),
-        Container(
-            padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(
-                color: ColorBackgroundApp().color_100,
-                borderRadius: const BorderRadius.all(Radius.circular(10))),
-            child: Column(
-              children: [
-                Text('НИЖНЕЕ (DIS)',
-                    softWrap: true,
-                    style: TextStyle(
-                        color: (inputSisDis.infoTestDIS == 'понижено')
-                            ? Colors.orange[300]
-                            : (inputSisDis.infoTestDIS == 'норма')
-                                ? Colors.green[300]
-                                : (inputSisDis.infoTestDIS == 'повышено')
-                                    ? Colors.red[300]
-                                    : Colors.white)),
-                Text(inputSisDis.infoTestDIS,
-                    style: TextStyle(color: ColorBackgroundApp().bg, fontSize: 14))
-              ],
-            )),
-        const SizedBox(height: 10),
-        Container(
-            padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(
-                color: ColorBackgroundApp().color_100,
-                borderRadius: const BorderRadius.all(Radius.circular(10))),
-            child: Column(
-              children: [
-                Text('ПУЛЬС', style: TextStyle(color: Colors.red[300])),
-                Text(inputSisDis.pulseInput.text,
-                    style: TextStyle(color: ColorBackgroundApp().bg, fontSize: 14))
-              ],
-            )),
-      ]),
+      Row(
+        children: [
+          Expanded(
+            child: _StatusChip(
+              title: 'ВЕРХНЕЕ (SIS)',
+              value: inputSisDis.infoTestSIS,
+            ),
+          ),
+          const SizedBox(width: 6),
+          Expanded(
+            child: _StatusChip(
+              title: 'НИЖНЕЕ (DIS)',
+              value: inputSisDis.infoTestDIS,
+            ),
+          ),
+          const SizedBox(width: 6),
+          Expanded(
+            child: _StatusChip(
+              title: 'ПУЛЬС',
+              value: inputSisDis.pulseInput.text,
+              titleColor: Colors.red[300],
+            ),
+          ),
+        ],
+      ),
     ]);
+  }
+}
+
+class _InfoChip extends StatelessWidget {
+  const _InfoChip({required this.title, required this.value});
+
+  final String title;
+  final String value;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
+      decoration: BoxDecoration(
+        color: ColorBackgroundApp.color_100,
+        borderRadius: const BorderRadius.all(Radius.circular(10)),
+      ),
+      child: Column(
+        children: [
+          Text(
+            title,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: const TextStyle(fontSize: 11),
+          ),
+          Text(
+            value.isEmpty ? '—' : value,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(color: ColorBackgroundApp.bg, fontSize: 18),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _StatusChip extends StatelessWidget {
+  const _StatusChip({
+    required this.title,
+    required this.value,
+    this.titleColor,
+  });
+
+  final String title;
+  final String value;
+  final Color? titleColor;
+
+  Color? _valueColor(String status) {
+    switch (status) {
+      case 'понижено':
+        return Colors.orange[300];
+      case 'норма':
+        return Colors.green[300];
+      case 'повышено':
+        return Colors.red[300];
+      default:
+        return Colors.white;
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(8),
+      decoration: BoxDecoration(
+        color: ColorBackgroundApp.color_100,
+        borderRadius: const BorderRadius.all(Radius.circular(10)),
+      ),
+      child: Column(
+        children: [
+          Text(
+            title,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            textAlign: TextAlign.center,
+            style: TextStyle(color: titleColor ?? _valueColor(value), fontSize: 11),
+          ),
+          Text(
+            value,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(color: ColorBackgroundApp.bg, fontSize: 14),
+          ),
+        ],
+      ),
+    );
   }
 }

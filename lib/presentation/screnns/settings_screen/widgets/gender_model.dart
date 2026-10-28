@@ -20,7 +20,7 @@ class GenderBottons extends StatelessWidget {
           width: double.infinity,
           child: Text(
             "Укажите ваш пол",
-            style: TextStyle(color: ColorBackgroundApp().color_100, fontSize: 16),
+            style: TextStyle(color: ColorBackgroundApp.color_100, fontSize: 16),
             textAlign: TextAlign.start,
           ),
         ),
@@ -34,13 +34,13 @@ class GenderBottons extends StatelessWidget {
                   child: (settingsProvider.yesnoGender == true)
                       ? Container(
                           decoration: BoxDecoration(
-                              color: ColorBackgroundApp().color_100,
+                              color: ColorBackgroundApp.color_100,
                               borderRadius:
                                   const BorderRadius.all(Radius.circular(30))),
                           margin: const EdgeInsets.all(2),
                           child: Center(
                               child: Text("Мужской",
-                                  style: TextStyle(color: ColorBackgroundApp().bg, fontSize: 18))))
+                                  style: TextStyle(color: ColorBackgroundApp.bg, fontSize: 18))))
                       : Container(
                           decoration: const BoxDecoration(
                               color: Colors.white,
@@ -59,12 +59,12 @@ class GenderBottons extends StatelessWidget {
                       ? Container(
                           margin: const EdgeInsets.all(2),
                           decoration: BoxDecoration(
-                              color: ColorBackgroundApp().color_100,
+                              color: ColorBackgroundApp.color_100,
                               borderRadius:
                                   const BorderRadius.all(Radius.circular(30))),
                           child: Center(
                               child: Text("Женский",
-                                  style: TextStyle(color: ColorBackgroundApp().bg, fontSize: 18))))
+                                  style: TextStyle(color: ColorBackgroundApp.bg, fontSize: 18))))
                       : Container(
                           margin: const EdgeInsets.all(2),
                           decoration: const BoxDecoration(

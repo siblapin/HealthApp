@@ -14,7 +14,7 @@ class ButtonAddHomeScreen extends StatelessWidget {
       width: double.infinity,
       height: 48,
       child: ElevatedButton.icon(
-        style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(ColorBackgroundApp().color_100)),
+        style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(ColorBackgroundApp.color_100)),
         onPressed: () {
           showModalBottomSheet(
             isScrollControlled: true,
@@ -25,10 +25,10 @@ class ButtonAddHomeScreen extends StatelessWidget {
             ),
           );
         },
-        icon: Icon(Icons.add_circle, color: ColorBackgroundApp().bg),
+        icon: Icon(Icons.add_circle, color: ColorBackgroundApp.bg),
         label: Text(
           "Добавить",
-          style: TextStyle(color: ColorBackgroundApp().bg, fontSize: 18),
+          style: TextStyle(color: ColorBackgroundApp.bg, fontSize: 18),
         ),
       ),
     );

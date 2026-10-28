@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../../domain/providers  /add_results_provider.dart';
+import '../../../domain/providers/add_results_provider.dart';
 import 'widgets/home_screen_widgets_exp.dart';
 
 class HomeScreenAndroid extends StatelessWidget {
-   const HomeScreenAndroid({super.key});
+  const HomeScreenAndroid({super.key});
 
   @override
   Widget build(BuildContext context) {
-      final screenListTab = context.watch<AddResultsProvider>();
+    final screenList = context.select(
+      (AddResultsProvider data) => data.screenList,
+    );
     return Column(
                 children: [
                   Visibility(
-                    visible: screenListTab.screenList,
+                    visible: screenList,
                     child: const Column(
                       children: [
                         LogoHomeScreen(),

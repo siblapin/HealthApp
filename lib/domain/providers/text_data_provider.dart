@@ -5,4 +5,13 @@ class TextDataProvider extends ChangeNotifier {
   final TextEditingController textDisData = TextEditingController();
   final TextEditingController textPulsData = TextEditingController();
   final TextEditingController textDataMedicine = TextEditingController();
+
+  @override
+  void dispose() {
+    textSisData.dispose();
+    textDisData.dispose();
+    textPulsData.dispose();
+    textDataMedicine.dispose();
+    super.dispose();
+  }
 }

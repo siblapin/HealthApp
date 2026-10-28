@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import '../../../widgets/safe_svg.dart';
 
 import 'package:provider/provider.dart';
 import '../../../../core/constants/constants_color.dart';
@@ -35,7 +35,7 @@ class StatusModel extends StatelessWidget {
           width: double.infinity,
           child: Text(
             nameTitle,
-            style: TextStyle(color: ColorBackgroundApp().color_100, fontSize: 16),
+            style: TextStyle(color: ColorBackgroundApp.color_100, fontSize: 16),
             textAlign: TextAlign.start,
           ),
         ),
@@ -52,21 +52,9 @@ class StatusModel extends StatelessWidget {
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        SvgPicture.asset(
-                          icon1,
-                          height: 26,
-                          width: 26,
-                        ),
-                        SvgPicture.asset(
-                          icon2,
-                          height: 26,
-                          width: 26,
-                        ),
-                        SvgPicture.asset(
-                          icon3,
-                          height: 26,
-                          width: 26,
-                        ),
+                        SafeSvg(asset: icon1, height: 26, width: 26),
+                        SafeSvg(asset: icon2, height: 26, width: 26),
+                        SafeSvg(asset: icon3, height: 26, width: 26),
                       ]),
                 ),
                 Expanded(
@@ -77,13 +65,13 @@ class StatusModel extends StatelessWidget {
                     child: (yesNoStatusProvider == true)
                         ? Container(
                             decoration: BoxDecoration(
-                                color: ColorBackgroundApp().color_100,
+                                color: ColorBackgroundApp.color_100,
                                 borderRadius: const BorderRadius.all(
                                     Radius.circular(30))),
                             margin: const EdgeInsets.all(2),
                             child: Center(
                                 child: Text("вкл",
-                                    style: TextStyle(color: ColorBackgroundApp().bg, fontSize: 18))))
+                                    style: TextStyle(color: ColorBackgroundApp.bg, fontSize: 18))))
                         : Container(
                             decoration: const BoxDecoration(
                                 color: Colors.white,
@@ -103,13 +91,13 @@ class StatusModel extends StatelessWidget {
                     child: (yesNoStatusProvider == false)
                         ? Container(
                             decoration: BoxDecoration(
-                                color: ColorBackgroundApp().color_100,
+                                color: ColorBackgroundApp.color_100,
                                 borderRadius: const BorderRadius.all(
                                     Radius.circular(30))),
                             margin: const EdgeInsets.all(2),
                             child: Center(
                                 child: Text("выкл",
-                                    style: TextStyle(color: ColorBackgroundApp().bg, fontSize: 18))))
+                                    style: TextStyle(color: ColorBackgroundApp.bg, fontSize: 18))))
                         : Container(
                             decoration: const BoxDecoration(
                                 color: Colors.white,

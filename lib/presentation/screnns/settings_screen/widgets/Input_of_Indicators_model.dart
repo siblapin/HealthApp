@@ -80,10 +80,10 @@ class InputModel extends StatelessWidget {
       children: [
         Text(
           nameInput,
-          style: TextStyle(color: ColorBackgroundApp().bg, fontSize: 16),
+          style: TextStyle(color: ColorBackgroundApp.bg, fontSize: 16),
         ),
         counterInput,
-        Text(nameText, style: TextStyle(fontSize: 12, color: ColorBackgroundApp().color_40)),
+        Text(nameText, style: TextStyle(fontSize: 12, color: ColorBackgroundApp.color_40)),
       ],
     );
   }
@@ -106,7 +106,7 @@ class InputCounterModel extends StatelessWidget {
           FilteringTextInputFormatter.allow(RegExp("[0-9]")),
         ],
         keyboardType: TextInputType.number,
-        cursorColor: ColorBackgroundApp().color_100,
+        cursorColor: ColorBackgroundApp.color_100,
         onChanged: (text) {
           if (text.length == 3) {
             textnext.nextFocus();
@@ -116,11 +116,11 @@ class InputCounterModel extends StatelessWidget {
         decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15),
-            borderSide: BorderSide(color: ColorBackgroundApp().color_40, width: 1.5),
+            borderSide: BorderSide(color: ColorBackgroundApp.color_40, width: 1.5),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15),
-            borderSide: BorderSide(color: ColorBackgroundApp().color_100, width: 1.5),
+            borderSide: BorderSide(color: ColorBackgroundApp.color_100, width: 1.5),
           ),
           filled: true,
           fillColor: Colors.white,
